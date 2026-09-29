@@ -13,3 +13,22 @@ uvicorn main:app --reload
 
 Test it:
 pytest -q
+
+## Architecture
+
+![Architecture](docs/architecture.png)
+
+<details>
+<summary>Mermaid source</summary>
+
+```mermaid
+flowchart LR
+    A[Client] --> B[FastAPI]
+    B --> C{Validate Text}
+    C -->|Empty| D[400 Error]
+    C -->|Valid| E[Process Text]
+    E --> F[Generate SHA-256]
+    F --> G[Return Result & Hash]
+```
+
+</details>

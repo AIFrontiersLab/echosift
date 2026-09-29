@@ -1,0 +1,7 @@
+flowchart LR
+    A[Client] --> B[FastAPI]
+    B --> C{Validate Text}
+    C -->|Empty| D[400 Error]
+    C -->|Valid| E[Process Text]
+    E --> F[Generate SHA-256]
+    F --> G[Return Result & Hash]
